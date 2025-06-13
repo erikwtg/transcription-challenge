@@ -1,0 +1,26 @@
+version: "3.8"
+
+x-shared-environment: &shared-environment
+  restart: unless-stopped
+  networks:
+    - transcription_challenge_network
+
+services:
+  webapp:
+    <<: *shared-environment
+    image: node:22.12.0
+    working_dir: /app
+    container_name: transcription-challenge-app
+    command: ["sh", "-c", "npm install && npm run dev"]
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+
+networks:
+  transcription_challenge_network:
+    external: true
