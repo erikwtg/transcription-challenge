@@ -1,0 +1,1 @@
+export { default as Transcriptions } from "./components/Transcriptions.svelte";
