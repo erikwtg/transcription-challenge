@@ -12,9 +12,11 @@
     label: string;
     /** The onclick event handler */
     onclick?: () => void;
+    /** Whether the button is disabled */
+    disabled?: boolean;
   }
 
-  const { primary = false, backgroundColor, size = 'medium', label, ...props }: Props = $props();
+  const { primary = false, backgroundColor, size = 'medium', label, disabled = false, ...props }: Props = $props();
   
   let mode = $derived(primary ? 'storybook-button--primary' : 'storybook-button--secondary');
   let style = $derived(backgroundColor ? `background-color: ${backgroundColor}` : '');
@@ -24,6 +26,7 @@
   type="button"
   class={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
   {style}
+  {disabled}
   {...props}
 >
   {label}

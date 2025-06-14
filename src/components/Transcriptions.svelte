@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { getMedicalKeywords, mockSpeechRecognitionAPI } from "../services/api";
-  import { TranscriptionList, Button } from ".";
+  import { TranscriptionList, Button, Loader } from ".";
 
   import { transcriptions } from "../store/transcriptions";
 
@@ -49,13 +49,38 @@
   }
 </script>
 
-<main class={`flex flex-col justify-center items-center h-full gap-6 ${className}`}>
-  <h1 class="text-3xl">Transcrição de Áudio</h1>
+<main class={`min-h-screen w-full bg-gray-50 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Transcrição de Áudio</h1>
+        </div>
+        
+        <div class="flex gap-4">
+          <Button 
+            label="Iniciar Transcrição"
+            primary={!loading}
+            onclick={handleClick}
+            disabled={loading}
+          />
+        </div>
+      </div>
 
-  <Button label="Transcrever" onclick={handleClick}/>
+      {#if loading}
+        <div class="mt-6">
+          <Loader />
+        </div>
+      {/if}
 
-  <TranscriptionList
-    transcriptions={$transcriptions}
-    {medicalKeywords}
-  />
+      {#if $transcriptions.length !== 0}
+        <div class="mt-6">
+          <TranscriptionList
+            transcriptions={$transcriptions}
+            {medicalKeywords}
+          />
+        </div>
+      {/if}
+    </div>
+  </div>
 </main>
