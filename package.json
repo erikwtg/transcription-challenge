@@ -37,6 +37,8 @@
     "vitest": "^3.2.3"
   },
   "dependencies": {
-    "path": "^0.12.7"
+    "clsx": "^2.1.1",
+    "path": "^0.12.7",
+    "tailwind-merge": "^3.3.1"
   }
 }

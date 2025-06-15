@@ -1,12 +1,15 @@
 <script lang="ts">
 	import type { TranscriptionSegmentProps } from "../types";
 
+	import { cn } from "../utils";
+
 	interface TranscriptionItemProps {
 		segment: TranscriptionSegmentProps;
 		medicalKeywords: string[];
+		class?: string;
 	}
 
-	const { segment, medicalKeywords, ...props }: TranscriptionItemProps = $props();
+	const { segment, medicalKeywords, class: className, ...props }: TranscriptionItemProps = $props();
 
 	function highlightedParts(text: string, keywords: string[]): { text: string; highlight: boolean }[] {
     if (!keywords.length) return [{ text, highlight: false }];
@@ -34,7 +37,7 @@
   const parts = $derived(highlightedParts(segment.text, medicalKeywords));
 </script>
 
-<p>
+<p class={cn(className)}>
 	<b>Segmento {segment.segmentId + 1}:
 		{#each parts as part}
 			{#if part.highlight}
