@@ -56,7 +56,7 @@
 <main class={cn(base, className)}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="space-y-8 bg-white rounded-lg shadow-lg p-6 gap-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:px-8">
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Transcrição de Áudio</h1>
         </div>
@@ -83,7 +83,7 @@
 
       {#if $transcriptions.length !== 0}
         <TranscriptionList
-          class="min-h-32"
+          class="min-h-32 max-h-96"
           transcriptions={$transcriptions}
           {medicalKeywords}
         />
