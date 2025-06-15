@@ -89,6 +89,18 @@
           {medicalKeywords}
         />
       {/if}
+
+      {#if !loading && $transcriptions.length !== 0}
+        <div class="text-center text-sm text-gray-500">
+          <div>
+            <span class="font-semibold text-gray-700">{$transcriptions.length}</span>
+            <span>segmentos exibidos.</span>
+          </div>
+          <span class="text-green-600 font-medium">
+            Fim da transcrição.
+          </span>
+        </div>
+      {/if}
     </div>
   </div>
 </main>
