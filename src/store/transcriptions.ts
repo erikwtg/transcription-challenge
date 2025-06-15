@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
 const buffer = new Map<number, string>();
 let expectedSegment = 0;

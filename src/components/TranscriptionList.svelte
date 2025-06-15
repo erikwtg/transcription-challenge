@@ -12,8 +12,8 @@
 
 	const { transcriptions, medicalKeywords, class: className }: TranscriptionListProps = $props();
 
-	const base = 'flex flex-col py-4 pl-4 pr-2 gap-y-2 border-2 rounded-2xl';
-	const scrollContainer = 'max-h-full overflow-y-auto scrollbar-custom';
+	const base = "flex flex-col py-4 pl-4 pr-2 gap-y-2 border-2 rounded-2xl";
+	const scrollContainer = "max-h-full overflow-y-auto scrollbar-custom";
 </script>
 
 <div class={cn(base, className)}>

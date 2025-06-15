@@ -1,1 +1,1 @@
-export * from "./ComposeClassNames";
+export * from "./composeClassNames";
