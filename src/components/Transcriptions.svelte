@@ -12,7 +12,7 @@
     maxSegments?: number;
   }
 
-  const { class: className, maxSegments = 10 }: TranscriptionsProps = $props();
+  let { class: className, maxSegments = 40 }: TranscriptionsProps = $props();
 
   const base = "min-h-screen w-full bg-gray-50";
 
@@ -77,11 +77,11 @@
         </div>
       </div>
 
-      {#if loading || $transcriptions.length === 0}
+      {#if loading && $transcriptions.length === 0}
         <TranscriptionListSkeleton count={1} />
       {/if}
 
-      {#if !loading && $transcriptions.length !== 0}
+      {#if $transcriptions.length !== 0}
         <TranscriptionList
           class="min-h-32"
           transcriptions={$transcriptions}
