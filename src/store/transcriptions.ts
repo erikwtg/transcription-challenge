@@ -13,10 +13,13 @@ function createTranscriptionStore() {
 
       update(current => {
         const updated = [...current];
-        while (buffer.has(expectedSegment)) {
+        let currentText = buffer.get(expectedSegment);
+        const TRANSCRIPTION_END = "Fim da transcrição";
+        while (currentText && !currentText?.includes(TRANSCRIPTION_END)) {
           updated.push({ segmentId: expectedSegment, text: buffer.get(expectedSegment)! });
           buffer.delete(expectedSegment);
           expectedSegment++;
+          currentText = buffer.get(expectedSegment);
         }
         return updated;
       });

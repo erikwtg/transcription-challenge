@@ -19,7 +19,7 @@
   let loading: boolean = $state<boolean>(false);
   let medicalKeywords = $state<string[]>([]);
 
-  let segmentCounter: number = 0;
+  let segmentCounter = $state<number>(0);
   let interval: ReturnType<typeof setInterval>;
 
   onMount(async () => {
@@ -60,13 +60,14 @@
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Transcrição de Áudio</h1>
         </div>
-        
+ 
         <div class="flex gap-4">
           <Button
             label="Iniciar Transcrição"
             primary={!loading}
             onclick={handleClick}
-            disabled={loading}
+            {loading}
+            progress={segmentCounter / maxSegments}
           >
             <span slot="icon">
               {#if loading}
