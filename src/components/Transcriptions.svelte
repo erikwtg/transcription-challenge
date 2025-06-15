@@ -69,7 +69,7 @@
             {loading}
             progress={segmentCounter / maxSegments}
           >
-            <span slot="icon">
+            <span>
               {#if loading}
                 <Loader />
               {/if}

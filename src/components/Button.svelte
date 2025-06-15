@@ -58,5 +58,5 @@
   {/if}
 
   <!-- svelte-ignore slot_element_deprecated -->
-  <slot name="icon"></slot>
+  <slot></slot>
 </button>

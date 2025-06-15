@@ -23,6 +23,6 @@
 <div class="flex items-center justify-center">
   <div class={cn(base, sizeClass)}></div>
   {#if text}
-		<span class="ml-3 text-gray-600">Processando...</span>
+		<span class="ml-3 text-gray-600">{text}</span>
 	{/if}
 </div>

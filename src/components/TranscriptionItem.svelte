@@ -9,7 +9,7 @@
 		class?: string;
 	}
 
-	const { segment, medicalKeywords, class: className, ...props }: TranscriptionItemProps = $props();
+	const { segment, medicalKeywords, class: className }: TranscriptionItemProps = $props();
 
 	function highlightedParts(text: string, keywords: string[]): { text: string; highlight: boolean }[] {
     if (!keywords.length) return [{ text, highlight: false }];
