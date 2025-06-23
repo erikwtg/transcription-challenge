@@ -11,10 +11,11 @@
 
 	const { segment, medicalKeywords, class: className }: TranscriptionItemProps = $props();
 
-	function highlightedParts(text: string, keywords: string[]): { text: string; highlight: boolean }[] {
-    if (!keywords.length) return [{ text, highlight: false }];
+  const regex = new RegExp(`\\b(${medicalKeywords.join('|')})\\b`, 'gi');
 
-    const regex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'gi');
+	function highlightedParts(text: string): { text: string; highlight: boolean }[] {
+    if (!medicalKeywords.length) return [{ text, highlight: false }];
+
     let parts = [];
     let lastIndex = 0;
 
@@ -34,7 +35,7 @@
     return parts;
   }
 
-  const parts = $derived(highlightedParts(segment.text, medicalKeywords));
+  const parts = $derived(highlightedParts(segment.text));
 </script>
 
 <p class={cn(className)}>
